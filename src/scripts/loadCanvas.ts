@@ -1,15 +1,37 @@
+import type { DrawGridOptions } from "src/types/DrawGridOptions";
 import { drawGrid } from "./drawGrid";
 
-const loadCanvas = () => {
+export function loadCanvas() {
   const canvas = document.getElementById("tilesCanvas") as HTMLCanvasElement;
-  if (!canvas) return;
+  if (!canvas) {
+    console.error("Canvas element with id 'tilesCanvas' not found.");
+    return;
+  }
+
   const context = canvas.getContext("2d");
-  if (!context) return;
+  if (!context) {
+    console.error("Failed to get 2D context from the canvas.");
+    return;
+  }
 
-  drawGrid({ canvas, context });
-  window.addEventListener("resize", () => drawGrid({ canvas, context }));
+  // Define options for drawGrid
+  const options: DrawGridOptions = {
+    canvas,
+    context,
+    // You can set additional options here if needed
+  };
 
-  // Placeholder for future animations
-  // You can extend or modify the drawGrid function to add animations
-};
+  // Start the grid drawing
+  const { stop, onResize } = drawGrid(options);
+
+  // Handle window resize
+  window.addEventListener("resize", onResize);
+
+  // Optional: Clean up when the page is unloaded
+  window.addEventListener("beforeunload", () => {
+    stop();
+    window.removeEventListener("resize", onResize);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", loadCanvas);
