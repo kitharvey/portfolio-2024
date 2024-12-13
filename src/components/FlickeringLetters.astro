@@ -1,0 +1,31 @@
+---
+const {
+  text = "kitharvey",
+  tileSize = 4,
+  gap = 2,
+  tileColor = "#03071e",
+  tileOpacity = 1,
+  flickerChance = 0.1,
+  animationSpeed = 60,
+  fontFamily = "Arial Black",
+  fontWeight = "bold",
+  textScale = 1,
+} = Astro.props;
+---
+
+<div
+  id="tilesContainer"
+  data-text={text}
+  data-tilesize={tileSize}
+  data-gap={gap}
+  data-tilecolor={tileColor}
+  data-tileopacity={tileOpacity}
+  data-flickerchance={flickerChance}
+  data-animationspeed={animationSpeed}
+  data-fontfamily={fontFamily}
+  data-fontweight={fontWeight}
+  data-textscale={textScale}
+  class="relative w-full h-28"
+>
+</div>
+<script src="../scripts/load.js"></script>

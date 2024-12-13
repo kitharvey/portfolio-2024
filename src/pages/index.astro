@@ -1,10 +1,20 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Grid from "@components/Grid.astro";
+import Links from "@components/Links.astro";
+import Overview from "@components/Overview.astro";
+import Experience from "@components/Experience.astro";
+import FlickeringLetters from "@components/FlickeringLetters.astro";
 ---
 
 <Layout>
-  <main>
-    <Grid />
+  <header></header>
+  <main class="max-w-prose mx-auto space-y-24">
+    <div>
+      <FlickeringLetters />
+      <Links />
+    </div>
+    <Overview />
+    <Experience />
   </main>
+  <footer></footer>
 </Layout>
