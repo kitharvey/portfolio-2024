@@ -1,20 +1,16 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Links from "@components/Links.astro";
 import Overview from "@components/Overview.astro";
 import Experience from "@components/Experience.astro";
-import FlickeringLetters from "@components/FlickeringLetters.astro";
+import Nav from "@components/Nav.astro";
+import Footer from "@components/Footer.astro";
 ---
 
 <Layout>
-  <header></header>
+  <Nav />
   <main class="max-w-prose mx-auto space-y-24">
-    <div>
-      <FlickeringLetters />
-      <Links />
-    </div>
     <Overview />
     <Experience />
   </main>
-  <footer></footer>
+  <Footer />
 </Layout>

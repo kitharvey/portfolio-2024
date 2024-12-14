@@ -1,7 +1,7 @@
 export function startFlickeringText(container) {
   if (!container) return;
 
-  const text = container.dataset.text || "Hello!";
+  const text = container.dataset.text;
   const tileSize = parseFloat(container.dataset.tilesize) || 4;
   const gap = parseFloat(container.dataset.gap) || 6;
   const tileColor = container.dataset.tilecolor || "#3498db";
@@ -57,8 +57,8 @@ export function startFlickeringText(container) {
     let textWidthInPixels;
     let textHeightInPixels;
 
-    let localTextGridWidth;
     let localTextGridHeight;
+    let localTextGridWidth;
 
     for (let i = 0; i < 10; i++) {
       textContext.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
@@ -89,6 +89,11 @@ export function startFlickeringText(container) {
     textHeightInPixels = fontSize;
     localTextGridHeight = Math.ceil(textHeightInPixels / totalTileSize);
     localTextGridWidth = Math.ceil(textWidthInPixels / totalTileSize);
+
+    // If text does not fit at all, return null
+    if (localTextGridWidth === 0 || localTextGridHeight === 0) {
+      return null;
+    }
 
     const textCanvasWidth = localTextGridWidth * totalTileSize;
     const textCanvasHeight = localTextGridHeight * totalTileSize;
@@ -143,12 +148,12 @@ export function startFlickeringText(container) {
   function getGridSize() {
     if (!container) return { cols: 0, rows: 0, totalTileSize: 0 };
 
-    // Use only the container's size, ensuring the grid fully depends on parent's width/height
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
     const totalTileSize = tileSize + gap;
-    const cols = Math.ceil(containerWidth / totalTileSize);
-    const rows = Math.ceil(containerHeight / totalTileSize);
+    // Use floor to ensure no partial tiles that would overflow
+    const cols = Math.floor(containerWidth / totalTileSize);
+    const rows = Math.floor(containerHeight / totalTileSize);
     return { cols, rows, totalTileSize };
   }
 
@@ -161,21 +166,29 @@ export function startFlickeringText(container) {
         if (textGrid[ty][tx]) {
           const x = textStartX + tx;
           const y = textStartY + ty;
+
+          // Ensure indices are within the grid
           if (x >= 0 && x < cols && y >= 0 && y < rows) {
             const posX = x * totalTileSize;
             const posY = y * totalTileSize;
 
-            const tile = document.createElement("div");
-            tile.style.position = "absolute";
-            tile.style.width = tileSize + "px";
-            tile.style.height = tileSize + "px";
-            tile.style.left = posX - tileSize + "px";
-            tile.style.top = posY - tileSize + "px";
-            tile.style.borderRadius = "50%";
-            tile.style.backgroundColor = tileColor;
-            tile.style.opacity = "0";
-            container.appendChild(tile);
-            tileDivs[ty * textGridWidth + tx] = tile;
+            // Check boundaries to prevent overflow
+            if (
+              posX + tileSize <= container.clientWidth &&
+              posY + tileSize <= container.clientHeight
+            ) {
+              const tile = document.createElement("div");
+              tile.style.position = "absolute";
+              tile.style.width = tileSize + "px";
+              tile.style.height = tileSize + "px";
+              tile.style.left = posX + "px";
+              tile.style.top = posY + "px";
+              tile.style.borderRadius = "50%";
+              tile.style.backgroundColor = tileColor;
+              tile.style.opacity = "0";
+              container.appendChild(tile);
+              tileDivs[ty * textGridWidth + tx] = tile;
+            }
           }
         }
       }
@@ -216,12 +229,23 @@ export function startFlickeringText(container) {
       rows,
       textScale,
     );
-    if (!result) return;
-    textGrid = result.textGrid;
-    textGridWidth = result.textGridWidth;
-    textGridHeight = result.textGridHeight;
-    textStartX = result.textStartX;
-    textStartY = result.textStartY;
+
+    if (!result) {
+      // If no text or can't be rendered, flicker all tiles
+      textGridWidth = cols;
+      textGridHeight = rows;
+      textStartX = 0;
+      textStartY = 0;
+      textGrid = Array.from({ length: textGridHeight }, () =>
+        Array.from({ length: textGridWidth }, () => true),
+      );
+    } else {
+      textGrid = result.textGrid;
+      textGridWidth = result.textGridWidth;
+      textGridHeight = result.textGridHeight;
+      textStartX = result.textStartX;
+      textStartY = result.textStartY;
+    }
 
     textSquares = new Float32Array(textGridWidth * textGridHeight);
     for (let i = 0; i < textSquares.length; i++) {

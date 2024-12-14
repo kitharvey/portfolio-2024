@@ -1,4 +1,4 @@
-import { startFlickeringText } from "./FlickerText";
+import { startFlickeringText } from "./flicker";
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("tilesContainer");
