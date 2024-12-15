@@ -38,12 +38,12 @@ const experiences: Experience[] = [
 ];
 ---
 
-<div class="font-sans mx-auto">
-  <h1 class="text-3xl font-semibold mb-8">Experience</h1>
+<section class="font-sans mx-auto">
+  <h1 class="text-3xl font-semibold mb-4">Experience</h1>
   <div class="space-y-8">
     {
       experiences.map((exp) => (
-        <div class="space-y-2">
+        <div class="space-y-1">
           <p class="text-sm text-primary">{exp.date}</p>
           <p class="text-xl font-medium">
             {exp.title} &nbsp;&#64;&nbsp; {exp.company}
@@ -53,4 +53,4 @@ const experiences: Experience[] = [
       ))
     }
   </div>
-</div>
+</section>

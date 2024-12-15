@@ -20,8 +20,8 @@
       0deg,
       rgba(0, 0, 0, 0.1),
       rgba(0, 0, 0, 0.1) 1px,
-      transparent 2px,
-      transparent 3px
+      transparent 1px,
+      transparent 2px
     );
 
     mix-blend-mode: multiply;
@@ -30,7 +30,6 @@
   .crt::after {
     content: "";
     @apply absolute inset-0 pointer-events-none;
-    /* Slight blur and subtle tint */
     background: radial-gradient(
       circle at center,
       rgba(0, 255, 0, 0.02) 0%,
