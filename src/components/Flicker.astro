@@ -1,12 +1,14 @@
 ---
-const {
-  tileSize = 8,
-  gap = 2,
-  tileColor = "#03071e",
-  tileOpacity = 1,
-  flickerChance = 0.5,
-  animationSpeed = 60,
-} = Astro.props;
+const flickerConfig = {
+  tileSize: 8,
+  gap: 2,
+  tileColor: "#03071e",
+  tileOpacity: 1,
+  flickerChance: 0.5,
+  animationSpeed: 60,
+};
+const { tileSize, gap, tileColor, tileOpacity, flickerChance, animationSpeed } =
+  flickerConfig;
 ---
 
 <div

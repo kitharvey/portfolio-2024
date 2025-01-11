@@ -7,35 +7,160 @@
     @apply text-primary;
   }
 }
+/* Global CRT Effect - Fixed version */
+body {
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+  animation: textShadow 1.6s infinite;
+  overflow-x: hidden;
+}
 
-@layer components {
-  .crt {
-    @apply relative;
+/* Scanlines Overlay */
+.crt-overlay {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  pointer-events: none; /* This allows clicking through */
+  z-index: 9999;
+  animation: scanlines 1s linear infinite;
+}
+
+/* Screen Glow and Vignette */
+.crt-glow {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  box-shadow:
+    inset 0 0 100px rgba(0, 0, 0, 0.5),
+    inset 0 0 50px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Wrapper for Fisheye Effect */
+.crt-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: perspective(1000px) rotateX(2deg);
+  transform-style: preserve-3d;
+  pointer-events: none;
+  z-index: 9997;
+}
+
+/* Main Content Container */
+main {
+  position: relative;
+  z-index: 1;
+  text-shadow:
+    0.1px 0 0 rgba(255, 0, 0, 0.5),
+    -0.1px 0 0 rgba(0, 255, 0, 0.5),
+    0 0.1px 0 rgba(0, 0, 255, 0.5);
+}
+
+/* Animations */
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes textShadow {
+  0% {
+    text-shadow:
+      0.4389924193300864px 0 1px rgba(0, 30, 255, 0.5),
+      -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.3),
+      0 0 3px;
+  }
+  5% {
+    text-shadow:
+      2.7928974010788217px 0 1px rgba(0, 30, 255, 0.5),
+      -2.7928974010788217px 0 1px rgba(255, 0, 80, 0.3),
+      0 0 3px;
+  }
+  100% {
+    text-shadow:
+      0.4389924193300864px 0 1px rgba(0, 30, 255, 0.5),
+      -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.3),
+      0 0 3px;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.97;
+  }
+  5% {
+    opacity: 0.95;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  25% {
+    opacity: 0.95;
+  }
+  30% {
+    opacity: 1;
+  }
+}
+
+/* Optimize for better performance */
+.crt-overlay,
+.crt-glow,
+.crt-wrapper {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .crt-overlay {
+    background-size: 100% 2px;
   }
 
-  .crt::before {
-    content: "";
-    @apply absolute inset-0 pointer-events-none;
-    background: repeating-linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.1) 1px,
-      transparent 1px,
-      transparent 2px
-    );
-
-    mix-blend-mode: multiply;
+  .crt-wrapper {
+    transform: perspective(1000px) rotateX(1deg);
   }
+}
 
-  .crt::after {
-    content: "";
-    @apply absolute inset-0 pointer-events-none;
-    background: radial-gradient(
-      circle at center,
-      rgba(0, 255, 0, 0.02) 0%,
-      rgba(0, 0, 0, 0.2) 100%
-    );
-    backdrop-filter: blur(2px);
-    opacity: 0.3;
-  }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121010;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00cc00;
 }
