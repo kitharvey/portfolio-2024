@@ -6,6 +6,9 @@ export default {
       colors: {
         primary: "hsl(231 82% 6% / <alpha-value>)",
       },
+      fontFamily: {
+        sans: ["Fira Code", "monospace"],
+      },
     },
   },
   plugins: [],
