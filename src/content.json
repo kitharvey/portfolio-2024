@@ -77,9 +77,9 @@
         "role": "Front-End Developer",
         "date": "June 2023 - October 2024",
         "responsibilities": [
-          "Developed performant user and admin dashboards using SvelteKit and TailwindCSS, focusing on fast load times and efficient state management.",
-          "Collaborated with UI/UX designers to implement interfaces optimized for user experience and Core Web Vitals.",
-          "Ensured front-end implementation adhered to SEO best practices for discoverability."
+          "Developed user and administrator dashboards utilizing SvelteKit and TailwindCSS.",
+          "Collaborated with UI/UX designers using Figma to maintain design integrity.",
+          "Produced efficient, well-organized, and maintainable code for application features."
         ]
       },
       {
@@ -87,9 +87,8 @@
         "role": "Web Developer",
         "date": "June 2022 - August 2022",
         "responsibilities": [
-          "Developed responsive user interfaces with a primary focus on cross-browser performance optimization.",
-          "Implemented front-end features ensuring efficient rendering and interaction.",
-          "Worked on improving website speed and overall technical SEO health."
+          "Constructed a reusable component library for the user interface using MarkoJS.",
+          "Worked closely with designers to convert Figma prototypes into functional, responsive web interfaces."
         ]
       },
       {
@@ -97,9 +96,9 @@
         "role": "UI Developer",
         "date": "May 2021 - May 2022",
         "responsibilities": [
-          "Developed and optimized high-fidelity UI components for enhanced performance and user engagement.",
-          "Refactored front-end codebase for improved performance, maintainability, and adherence to SEO guidelines.",
-          "Contributed to improving page load speeds across key user flows."
+          "Enhanced existing user interface components leveraging jQuery, CSS, HTML, and PHP.",
+          "Created email marketing templates and customized WordPress themes.",
+          "Implemented visually engaging designs based on Adobe XD mockups."
         ]
       },
       {
@@ -107,9 +106,19 @@
         "role": "Front-End Developer",
         "date": "July 2020 - October 2020",
         "responsibilities": [
-          "Engineered modular front-end features designed for performance and scalability.",
-          "Integrated various third-party APIs, ensuring efficient data fetching and minimal performance impact.",
-          "Implemented front-end logic with attention to code efficiency and speed."
+          "Engineered and refined front-end components using React.js and SCSS.",
+          "Developed interactive data visualizations employing libraries such as ChartJS, Google Charts, and ApexCharts.",
+          "Partnered with UI/UX design team to ensure a unified and effective user experience."
+        ]
+      },
+      {
+        "company": "Six Eleven Global Services",
+        "role": "Quality Assurance",
+        "date": "2016 - 2019",
+        "responsibilities": [
+          "Evaluated customer service interactions to ensure adherence to quality benchmarks.",
+          "Delivered constructive feedback to agents to enhance service quality.",
+          "Consistently met or surpassed key performance indicators."
         ]
       }
     ]
