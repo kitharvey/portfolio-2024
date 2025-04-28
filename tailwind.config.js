@@ -7,10 +7,10 @@ export default {
         primary: "hsl(231 82% 6% / <alpha-value>)",
       },
       fontFamily: {
-        sans: ["Fira Code", "monospace"],
+        sans: ["Poppins", "sans-serif"],
       },
     },
   },
   plugins: [],
-  darkMode: "selector",
+  darkMode: ["selector", '[data-mode="dark"]'],
 };

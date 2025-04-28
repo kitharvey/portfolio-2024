@@ -1,54 +1,38 @@
 ---
 interface Experience {
   company: string;
-  title: string;
+  role: string;
   date: string;
-  summary: string;
+  responsibilities: string[];
 }
 
-const experiences: Experience[] = [
-  {
-    company: "Juice.ai",
-    title: "Front-End Developer",
-    date: "June 2023 – October 2024",
-    summary:
-      "Built user and admin dashboards using SvelteKit and TailwindCSS. Collaborated closely with UI/UX designers via Figma to ensure design consistency, and delivered efficient, organized, and maintainable code.",
-  },
-  {
-    company: "Cambiata Music",
-    title: "Web Developer",
-    date: "June 2022 - August 2022",
-    summary:
-      "Developed responsive user interfaces, optimized performance, and collaborated with cross-functional teams to enhance user experience and maintain design consistency.",
-  },
-  {
-    company: "Yes We Vibe",
-    title: "UI Developer",
-    date: "May 2021 - May 2022",
-    summary:
-      "Implemented high-fidelity UI components, ensured cross-browser compatibility, and improved front-end code quality while working closely with designers to uphold brand identity.",
-  },
-  {
-    company: "Sponsorlytix",
-    title: "Front-End Developer",
-    date: "July 2020 - October 2020",
-    summary:
-      "Built modular front-end features, integrated APIs for dynamic data display, and refined site structure, resulting in improved load times and an intuitive user interface.",
-  },
-];
+interface Props {
+  experience: {
+    title: string;
+    description: string;
+    experiences: Experience[];
+  };
+}
+
+const { experience } = Astro.props;
 ---
 
 <section class="font-sans mx-auto">
-  <h2 class="text-3xl font-semibold mb-4">Experience</h2>
+  <h2 class="text-3xl font-semibold mb-4">{experience.title}</h2>
+  <p class="mb-4 text-primary">{experience.description}</p>
   <div class="space-y-8">
     {
-      experiences.map((exp) => (
+      experience.experiences.map((exp) => (
         <div class="space-y-1">
           <p class="text-sm text-primary">{exp.date}</p>
           <p class="text-xl font-medium">
-            {exp.title} &nbsp;&#64;&nbsp; {exp.company}
+            {exp.role} &nbsp;&#64;&nbsp; {exp.company}
           </p>
-          <p class="text-base text-primary leading-relaxed">{exp.summary}</p>
+          <ul class="text-base text-primary leading-relaxed list-disc list-inside">
+            {exp.responsibilities.map((responsibility) => (
+              <li class="list-none">- {responsibility}</li>
+            ))}
+          </ul>
         </div>
       ))
     }

@@ -1,18 +1,22 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Overview from "@components/Overview.astro";
+import Hero from "@components/Hero.astro";
 import Experience from "@components/Experience.astro";
 import Nav from "@components/Nav.astro";
 import Footer from "@components/Footer.astro";
 import Links from "@components/Links.astro";
+
+import content from "../content.json";
+import Overview from "@components/Overview.astro";
 ---
 
-<Layout>
+<Layout site={content}>
   <Nav />
-  <main class="max-w-prose mx-auto space-y-24">
-    <Overview />
-    <Links />
-    <Experience />
+  <main class="max-w-prose mr-auto space-y-24">
+    <Hero name={content.name} description={content.description} />
+    <Links contact={content.contact} />
+    <Experience experience={content.experience} />
+    <Overview overview={content.overview} />
   </main>
   <Footer />
 </Layout>

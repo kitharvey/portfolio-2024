@@ -1,156 +1,179 @@
 ---
+import "@fontsource/poppins";
 import "@base.css";
+import Particles from "@components/Particles.astro";
 
-const id = "G-ELBQFV4ZXP";
+interface SiteProps {
+  name: string;
+  title: string;
+  description: string;
+  siteUrl: string;
+  favicon: string;
+  logo: string;
+  profileImage: string;
+  socialHandle: string;
+  meta: {
+    keywords: string;
+    og: {
+      type: string;
+      locale: string;
+      siteName: string;
+      imageWidth: number;
+      imageHeight: number;
+      imageAlt: string;
+    };
+    twitter: {
+      card: string;
+    };
+    schema: {
+      datePublished: string;
+      worksFor: {
+        name: string;
+        url: string;
+      };
+    };
+  };
+  contact: {
+    links: {
+      label: string;
+      href: string;
+      ariaLabel: string;
+      target?: string;
+      rel?: string;
+      srText?: string;
+    }[];
+  };
+}
+
+interface Props {
+  site: SiteProps;
+}
+
+const { site } = Astro.props;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: site.title,
+  url: site.siteUrl,
+  image: `${site.siteUrl}${site.profileImage}`,
+  email: site.contact.links.find((link) => link.label === "Email Me")?.href,
+  sameAs: site.contact.links
+    .filter((link) => ["GitHub", "LinkedIn"].includes(link.label))
+    .map((link) => link.href),
+  worksFor: {
+    "@type": "Organization",
+    name: site.meta.schema.worksFor.name,
+    url: site.meta.schema.worksFor.url,
+    logo: `${site.siteUrl}${site.logo}`,
+  },
+};
+if (personSchema.email === undefined) {
+  delete personSchema.email;
+}
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.meta.og.siteName,
+  url: site.siteUrl,
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: `${site.name} | ${site.title}`,
+  url: site.siteUrl,
+  description: site.description,
+  datePublished: site.meta.schema.datePublished,
+  publisher: {
+    "@type": "Person",
+    name: site.name,
+  },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: site.siteUrl,
+      },
+    ],
+  },
+};
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      is:inline
-      src="https://www.googletagmanager.com/gtag/js?id=G-YHTTD6NDHZ"></script>
-    <script>
-      (window as any).dataLayer = (window as any).dataLayer || [];
-      function gtag(...args: any[]) {
-        (window as any).dataLayer.push(args);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-YHTTD6NDHZ");
-    </script>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Kit Harvey is a front-end web developer specializing in creating high-quality, user-focused websites. Explore my portfolio to see my work."
-    />
-    <meta name="author" content="Kit Harvey" />
+    <meta name="description" content={site.description} />
+    <meta name="author" content={site.name} />
     <meta name="robots" content="index, follow" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="canonical" href="https://kitharvey.dev/" />
+    <meta name="keywords" content={site.meta.keywords} />
+    <link rel="icon" href={site.favicon} type="image/svg+xml" />
+    <link rel="canonical" href={Astro.url.href} />
+    <title>{site.name} | {site.title} Portfolio</title>
 
-    <title>Kit Harvey | Front-End Web Developer</title>
+    <link rel="preload" href={site.favicon} as="image" type="image/svg+xml" />
+    <link rel="preload" href={site.profileImage} as="image" />
 
-    <!-- Schema Markup -->
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Kit Harvey",
-        "jobTitle": "Front-End Web Developer",
-        "url": "https://kitharvey.dev/",
-        "image": "https://kitharvey.dev/profile-image.jpg",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "Freelance"
-        },
-        "sameAs": [
-          "https://github.com/kitharvey",
-          "https://www.linkedin.com/in/kitharvey"
-        ]
-      }
-    </script>
-
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Kit Harvey Portfolio",
-        "url": "https://kitharvey.dev/",
-        "logo": "https://kitharvey.dev/logo.svg",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "",
-          "email": "kitharveycaubalejo@gmail.com",
-          "contactType": "Customer Support",
-          "areaServed": "Global",
-          "availableLanguage": ["English"]
-        },
-        "sameAs": [
-          "https://github.com/kitharvey",
-          "https://www.linkedin.com/in/kitharvey"
-        ]
-      }
-    </script>
-
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Kit Harvey Portfolio",
-        "url": "https://kitharvey.dev/"
-      }
-    </script>
-
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Kit Harvey | Front-End Web Developer",
-        "url": "https://kitharvey.dev/",
-        "description": "Kit Harvey is a front-end web developer specializing in creating high-quality, user-focused websites. Explore my portfolio to see my work.",
-        "datePublished": "2025-01-01",
-        "mainEntity": {
-          "@type": "Person",
-          "name": "Kit Harvey"
-        },
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://kitharvey.dev/"
-            }
-          ]
-        }
-      }
-    </script>
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://kitharvey.dev/" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="Kit Harvey Portfolio" />
-    <meta property="og:title" content="Kit Harvey | Front-End Web Developer" />
-    <meta
-      property="og:description"
-      content="Kit Harvey is a front-end web developer specializing in creating high-quality, user-focused websites. Explore my portfolio to see my work."
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
     />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(webSiteSchema)}
+    />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(webPageSchema)}
+    />
+
+    <meta property="og:type" content={site.meta.og.type} />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:locale" content={site.meta.og.locale} />
+    <meta property="og:site_name" content={site.meta.og.siteName} />
+    <meta
+      property="og:title"
+      content={`${site.name} | ${site.title} Portfolio`}
+    />
+    <meta property="og:description" content={site.description} />
     <meta
       property="og:image"
-      content="https://kitharvey.dev/profile-image.jpg"
+      content={`${new URL(site.profileImage, site.siteUrl).href}`}
     />
+    <meta property="og:image:width" content={`${site.meta.og.imageWidth}`} />
+    <meta property="og:image:height" content={`${site.meta.og.imageHeight}`} />
+    <meta property="og:image:alt" content={site.meta.og.imageAlt} />
 
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@kitharveydotdev" />
-    <meta name="twitter:creator" content="@kitharveydotdev" />
-    <meta name="twitter:title" content="Kit Harvey | Front-End Web Developer" />
+    <meta name="twitter:card" content={site.meta.twitter.card} />
+    <meta name="twitter:site" content={site.socialHandle} />
+    <meta name="twitter:creator" content={site.socialHandle} />
     <meta
-      name="twitter:description"
-      content="Kit Harvey is a front-end web developer specializing in creating high-quality, user-focused websites. Explore my portfolio to see my work."
+      name="twitter:title"
+      content={`${site.name} | ${site.title} Portfolio`}
     />
+    <meta name="twitter:description" content={site.description} />
     <meta
-      name="twitter:image"
-      content="https://kitharvey.dev/profile-image.jpg"
+      property="twitter:image"
+      content={`${new URL(site.profileImage, site.siteUrl).href}`}
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
-      rel="stylesheet"
-    />
+    <meta property="twitter:image:alt" content={site.meta.og.imageAlt} />
   </head>
   <body>
-    <div class="crt-overlay"></div>
-    <div class="crt-glow"></div>
-    <div class="crt-wrapper"></div>
-    <div class="sm:px-0 px-4">
-      <slot />
+    <div class="min-h-screen">
+      <main class="container mx-auto px-4 sm:px-0">
+        <slot />
+      </main>
     </div>
+    <Particles />
   </body>
 </html>

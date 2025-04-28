@@ -1,55 +1,43 @@
 ---
+interface Link {
+  label: string;
+  href: string;
+  ariaLabel: string;
+  target?: string;
+  rel?: string;
+  srText?: string;
+}
 
+interface Props {
+  contact: {
+    title: string;
+    description: string;
+    links: Link[];
+  };
+}
+
+const { contact } = Astro.props;
 ---
 
 <section class="contact-section">
-  <h2 class="text-3xl font-semibold mb-4">Let's Connect</h2>
-  <p class="mb-4 text-primary">
-    Feel free to reach out to me via email or check out my profiles on these
-    platforms.
-  </p>
+  <h2 class="text-3xl font-semibold mb-4">{contact.title}</h2>
+  <p class="mb-4 text-primary">{contact.description}</p>
   <ul class="flex flex-wrap items-center gap-4 text-lg font-sans">
-    <li>
-      <a
-        href="mailto:kitharveycaubalejo@gmail.com"
-        class="text-xl font-medium text-primary hover:text-primary-dark hover:underline transition-colors duration-200"
-        aria-label="Send me an email"
-      >
-        Email Me
-      </a>
-    </li>
-    <li>
-      <a
-        href="https://docs.google.com/document/d/e/2PACX-1vTADBb3CON3ld0TTQDJCfy_Fn7dVW9iGBSGLbj9N0evqZZIvwN-q3ZDc6Z2_rrV3dY-KUGmBrljh5pb/pub"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-xl font-medium text-primary hover:text-primary-dark hover:underline transition-colors duration-200"
-        aria-label="View my resume in a new tab"
-      >
-        Resume <span class="sr-only">(opens in a new tab)</span>
-      </a>
-    </li>
-    <li>
-      <a
-        href="https://github.com/kitharvey"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-xl font-medium text-primary hover:text-primary-dark hover:underline transition-colors duration-200"
-        aria-label="View my GitHub profile in a new tab"
-      >
-        GitHub <span class="sr-only">(opens in a new tab)</span>
-      </a>
-    </li>
-    <li>
-      <a
-        href="https://www.linkedin.com/in/kitharvey/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-xl font-medium text-primary hover:text-primary-dark hover:underline transition-colors duration-200"
-        aria-label="View my LinkedIn profile in a new tab"
-      >
-        LinkedIn <span class="sr-only">(opens in a new tab)</span>
-      </a>
-    </li>
+    {
+      contact.links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-xl font-medium text-primary hover:text-primary-dark hover:underline transition-colors duration-200"
+            aria-label={link.ariaLabel}
+            {...(link.target && { target: link.target })}
+            {...(link.rel && { rel: link.rel })}
+          >
+            {link.label}
+            {link.srText && <span class="sr-only">{link.srText}</span>}
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </section>

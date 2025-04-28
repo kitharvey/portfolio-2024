@@ -1,0 +1,117 @@
+{
+  "name": "Kit Harvey",
+  "title": "Full Stack Developer",
+  "description": "I'm a results-oriented Full Stack Developer based in the Philippines, specializing in building high-performance, SEO-optimized web applications. I focus on creating scalable, efficient, and effective solutions by leveraging expertise across the entire technology stack, from front-end interfaces to back-end systems.",
+  "siteUrl": "https://kitharvey.dev/",
+  "favicon": "/favicon.svg",
+  "logo": "/logo.svg",
+  "profileImage": "/profile-image.png",
+  "socialHandle": "@kitharveydotdev",
+  "meta": {
+    "keywords": "full stack developer, web developer, SEO optimization, web performance, back-end developer, front-end developer, portfolio, Kit Harvey, web development, Philippines developer, performance-driven developer",
+    "og": {
+      "type": "website",
+      "locale": "en_US",
+      "siteName": "Kit Harvey - Full Stack Developer | SEO & Performance Focused",
+      "imageWidth": 1200,
+      "imageHeight": 630,
+      "imageAlt": "Kit Harvey Full Stack Developer Portfolio Preview | SEO & Performance Focused"
+    },
+    "twitter": {
+      "card": "summary_large_image"
+    },
+    "schema": {
+      "datePublished": "2025-04-28",
+      "worksFor": {
+        "name": "Freelance",
+        "url": "https://kitharvey.dev/"
+      }
+    }
+  },
+  "overview": {
+    "title": "About Me",
+    "summary": "Throughout my career, I've architected and contributed to projects requiring robust full-stack solutions, focusing on performance optimization and search engine visibility. I thrive in environments where I can collaborate on building impactful, scalable, and technically sound applications that drive results. My goal is always to deliver efficient code and measurable improvements.",
+    "note": "Beyond coding, I am committed to continuous learning in full-stack technologies, SEO best practices, and performance optimization techniques."
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "description": "Interested in collaborating or discussing a project? Feel free to reach out via email or connect with me on these platforms.",
+    "links": [
+      {
+        "label": "Email Me",
+        "href": "mailto:kitharveycaubalejo@gmail.com",
+        "ariaLabel": "Send me an email"
+      },
+      {
+        "label": "Resume",
+        "href": "https://docs.google.com/document/d/e/2PACX-1vTADBb3CON3ld0TTQDJCfy_Fn7dVW9iGBSGLbj9N0evqZZIvwN-q3ZDc6Z2_rrV3dY-KUGmBrljh5pb/pub",
+        "ariaLabel": "View my resume focusing on Full Stack Development, SEO, and Performance in a new tab",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "srText": "(opens in a new tab)"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/kitharvey",
+        "ariaLabel": "View my GitHub profile showcasing Full Stack projects in a new tab",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "srText": "(opens in a new tab)"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/kitharvey/",
+        "ariaLabel": "View my LinkedIn profile detailing Full Stack experience in a new tab",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "srText": "(opens in a new tab)"
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "description": "A summary of my contributions and roles focused on building performance-driven applications.",
+    "experiences": [
+      {
+        "company": "Juice.ai",
+        "role": "Front-End Developer",
+        "date": "June 2023 - October 2024",
+        "responsibilities": [
+          "Developed performant user and admin dashboards using SvelteKit and TailwindCSS, focusing on fast load times and efficient state management.",
+          "Collaborated with UI/UX designers to implement interfaces optimized for user experience and Core Web Vitals.",
+          "Ensured front-end implementation adhered to SEO best practices for discoverability."
+        ]
+      },
+      {
+        "company": "Cambiata Music",
+        "role": "Web Developer",
+        "date": "June 2022 - August 2022",
+        "responsibilities": [
+          "Developed responsive user interfaces with a primary focus on cross-browser performance optimization.",
+          "Implemented front-end features ensuring efficient rendering and interaction.",
+          "Worked on improving website speed and overall technical SEO health."
+        ]
+      },
+      {
+        "company": "Yes We Vibe",
+        "role": "UI Developer",
+        "date": "May 2021 - May 2022",
+        "responsibilities": [
+          "Developed and optimized high-fidelity UI components for enhanced performance and user engagement.",
+          "Refactored front-end codebase for improved performance, maintainability, and adherence to SEO guidelines.",
+          "Contributed to improving page load speeds across key user flows."
+        ]
+      },
+      {
+        "company": "Sponsorlytix",
+        "role": "Front-End Developer",
+        "date": "July 2020 - October 2020",
+        "responsibilities": [
+          "Engineered modular front-end features designed for performance and scalability.",
+          "Integrated various third-party APIs, ensuring efficient data fetching and minimal performance impact.",
+          "Implemented front-end logic with attention to code efficiency and speed."
+        ]
+      }
+    ]
+  }
+}
