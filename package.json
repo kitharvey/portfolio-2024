@@ -22,8 +22,8 @@
     "wrangler": "^4.13.2"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
     "prettier": "^3.5.3",
-    "prettier-plugin-astro": "^0.14.1",
-    "typography": "link:@tailwindcss\\typography"
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

@@ -2,6 +2,7 @@
 import "@fontsource/poppins";
 import "@base.css";
 import Particles from "@components/Particles.astro";
+import BreadCrumb from "@components/BreadCrumb.astro";
 
 interface SiteProps {
   name: string;
@@ -171,6 +172,7 @@ const webPageSchema = {
   <body>
     <div class="min-h-screen">
       <main class="container mx-auto px-4 sm:px-0">
+        <BreadCrumb server:defer />
         <slot />
       </main>
     </div>

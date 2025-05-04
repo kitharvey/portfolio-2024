@@ -1,0 +1,13 @@
+---
+import { Content } from "../../content/blog/roundest.md";
+import Layout from "@layouts/Layout.astro";
+import Footer from "@components/Footer.astro";
+import content from "../../content/blog/roundest.json";
+---
+
+<Layout site={content}>
+  <main class="prose mr-auto mt-4">
+    <Content />
+  </main>
+  <Footer />
+</Layout>

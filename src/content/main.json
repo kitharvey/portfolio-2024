@@ -122,5 +122,20 @@
         ]
       }
     ]
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "description": "A selection of projects that highlight my skills in full-stack development, performance optimization, and SEO.",
+    "projects": [
+      {
+        "name": "Roundest Pokémon",
+        "description": "A SvelteKit app using Cloudflare and PokéAPI to vote on the roundest Pokémon.",
+        "route": "/projects/roundest",
+        "url": "https://roundest.kitharvey.pages.dev",
+        "githubUrl": "https://github.com/kitharvey/roundest",
+        "image": "/screenshots/roundest/large-vote.png",
+        "stack": ["SvelteKit", "Cloudflare", "PokéAPI"]
+      }
+    ]
   }
 }

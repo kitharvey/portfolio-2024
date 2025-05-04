@@ -2,20 +2,20 @@
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
 import Experience from "@components/Experience.astro";
-import Nav from "@components/Nav.astro";
 import Footer from "@components/Footer.astro";
 import Links from "@components/Links.astro";
 
-import content from "../content.json";
+import content from "../content/main.json";
 import Overview from "@components/Overview.astro";
+import Projects from "@components/Projects.astro";
 ---
 
 <Layout site={content}>
-  <Nav />
-  <main class="max-w-prose mr-auto space-y-24">
+  <main class="max-w-prose mr-auto space-y-24 mt-24">
     <Hero name={content.name} description={content.description} />
     <Links contact={content.contact} />
     <Experience experience={content.experience} />
+    <Projects projects={content.projects} />
     <Overview overview={content.overview} />
   </main>
   <Footer />

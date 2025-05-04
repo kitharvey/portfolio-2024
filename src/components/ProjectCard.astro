@@ -1,0 +1,29 @@
+---
+interface Project {
+  name: string;
+  description: string;
+  route: string;
+  url: string;
+  githubUrl: string;
+  stack: string[];
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props as Props;
+const { name, description, route, stack } = project;
+---
+
+<li>
+  <a href={route} class="w-full hover:underline">
+    <div class="flex flex-col">
+      <h3 class="text-xl font-bold">{name}</h3>
+      <p class="text-md">{description}</p>
+      <div class="flex gap-2">
+        {stack.map((tag) => <span class="text-sm">{tag}</span>)}
+      </div>
+    </div>
+  </a>
+</li>

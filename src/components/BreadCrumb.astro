@@ -1,0 +1,42 @@
+---
+const referer = Astro.request.headers.get("Referer") || "/";
+const url = new URL(referer);
+const currentPage = url.pathname;
+
+const segments = currentPage.split("/").filter(Boolean);
+const breadcrumbs = segments.map((segment, index) => {
+  const href = "/" + segments.slice(0, index + 1).join("/");
+  const name = segment;
+  return { href, name };
+});
+---
+
+{
+  currentPage !== "/" && (
+    <nav class="py-4" aria-label="breadcrumb">
+      <ol class="container flex items-center gap-2">
+        <li>
+          <a
+            href="/"
+            class="text-sm font-medium text-gray-500 hover:text-gray-700"
+          >
+            <span>Home</span>
+          </a>
+        </li>
+        {breadcrumbs.map(({ href, name }) => (
+          <li class="flex items-center">
+            <span class="mx-2 text-gray-400">/</span>
+            <a
+              class={`text-sm capitalize font-medium ${href === currentPage ? "text-black" : "text-gray-500 hover:text-gray-700"} `}
+              href={href}
+              aria-label={`Go to ${name}`}
+              aria-current={href === currentPage ? "page" : undefined}
+            >
+              {name}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}

@@ -1,0 +1,59 @@
+{
+  "name": "Roundest Pokémon",
+  "title": "I Built a Ridiculous App to Rank Pokémon Roundness",
+  "description": "A gloriously pointless app to vote on which Pokémon is the roundest, built with SvelteKit, Cloudflare, and PokéAPI. Pick the chunkiest Pokémon and check the leaderboard of spherical champs.",
+  "siteUrl": "https://roundest.kitharvey.pages.dev",
+  "favicon": "/favicon.svg",
+  "logo": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+  "profileImage": "https://roundest.kitharvey.dev/pokemon/1.png",
+  "socialHandle": "@kitharveydotdev",
+  "meta": {
+    "keywords": "Pokémon, roundness, SvelteKit, Cloudflare, PokéAPI, voting app, leaderboard",
+    "og": {
+      "type": "website",
+      "locale": "en_US",
+      "siteName": "Roundest Pokémon",
+      "imageWidth": 475,
+      "imageHeight": 475,
+      "imageAlt": "Two Pokémon facing off in a roundness voting app"
+    },
+    "twitter": {
+      "card": "summary_large_image"
+    },
+    "schema": {
+      "datePublished": "2025-05-04",
+      "worksFor": {
+        "name": "Kit Harvey",
+        "url": "https://kitharvey.dev"
+      }
+    }
+  },
+  "contact": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/kitharvey/roundest",
+        "ariaLabel": "View the source code on GitHub",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "srText": "External link to GitHub repository"
+      },
+      {
+        "label": "X Profile",
+        "href": "https://x.com/kitharvey",
+        "ariaLabel": "Visit my profile on X",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "srText": "External link to X profile"
+      },
+      {
+        "label": "Website",
+        "href": "https://kitharvey.dev",
+        "ariaLabel": "Visit my personal website",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "srText": "External link to personal website"
+      }
+    ]
+  }
+}
